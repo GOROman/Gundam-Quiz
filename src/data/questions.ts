@@ -1,10 +1,33 @@
 import type { QuizQuestion } from '@/types/quiz'
 
 /**
- * 仮のガンダム3択クイズデータ（ユーモア・ネタ重視/過激すぎない）
+ * サンプル：アマチュア無線4級 試験対策問題
+ * テンプレートとして利用可能
  */
+import type { QuizQuestion } from '@/types/quiz'
+
 export const questions: QuizQuestion[] = [
-  // --- ここから100問 ---
+  {
+    question: '電波法で定める免許の有効期間は？',
+    options: ['3年', '5年', '10年', '15年'],
+    answerIndex: 2,
+    explanation: '正解は10年。電波法第20条に規定されています。',
+  },
+  {
+    question: '送信出力の最大値は？',
+    options: ['10W', '20W', '50W', '100W'],
+    answerIndex: 1,
+    explanation: '第四級アマチュア無線技士は20Wまで送信可能です。',
+  },
+  {
+    question: '非常通信で優先される内容は？',
+    options: ['天気予報', '災害情報', '趣味の会話', '音楽放送'],
+    answerIndex: 1,
+    explanation: '災害時の情報伝達が最優先されます。',
+  },
+  // 追加サンプル問題をここに記載
+];
+
   {
     question: 'セイラ・マスのシャワーシーンで覗いてしまったのは誰？',
     options: ['アムロ', 'カイ', 'ハヤト'],
