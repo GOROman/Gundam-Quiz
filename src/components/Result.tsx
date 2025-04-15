@@ -48,7 +48,7 @@ function Result({ score, total, onRetry }: ResultProps) {
   const rank = getRank(rate);
   const militaryRank = getMilitaryRank(rate);
   const shareText = encodeURIComponent(
-    `『ちょっとHなガンダムクイズ』\n${total}問中${score}問正解（正答率${percent}%）【${militaryRank}】 #ガンダムクイズ https://gundam-quiz.windsurf.build/`
+    `『ちょっとHなガンダムクイズ』\n${total}問中${score}問正解（正答率${percent}%） -【${militaryRank}】 \n#ガンダムクイズ https://gundam-quiz.windsurf.build/`
   );
   const tweetUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
 
