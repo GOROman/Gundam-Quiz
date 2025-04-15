@@ -21,6 +21,19 @@ type ResultProps = {
   onRetry: () => void;
 };
 
+const getMilitaryRank = (rate: number): string => {
+  if (rate === 1) return "ギレン級";
+  if (rate >= 0.9) return "大将級";
+  if (rate >= 0.8) return "中将級";
+  if (rate >= 0.7) return "少将級";
+  if (rate >= 0.6) return "大佐級";
+  if (rate >= 0.5) return "中佐級";
+  if (rate >= 0.4) return "少佐級";
+  if (rate >= 0.3) return "大尉級";
+  if (rate >= 0.2) return "中尉級";
+  return "クソザコ級";
+};
+
 const getRank = (rate: number): string => {
   if (rate === 1) return "Sランク！パーフェクト！";
   if (rate >= 0.8) return "Aランク！すごい！";
@@ -33,8 +46,9 @@ function Result({ score, total, onRetry }: ResultProps) {
   const rate = score / total;
   const percent = Math.round(rate * 100);
   const rank = getRank(rate);
+  const militaryRank = getMilitaryRank(rate);
   const shareText = encodeURIComponent(
-    `ガンダム3択クイズに挑戦！\n${total}問中${score}問正解（正答率${percent}%） #ガンダムクイズ https://gundam-quiz.windsurf.build/`
+    `『ちょっとHなガンダムクイズ』\n${total}問中${score}問正解（正答率${percent}%）【${militaryRank}】 #ガンダムクイズ https://gundam-quiz.windsurf.build/`
   );
   const tweetUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
 
@@ -50,6 +64,7 @@ function Result({ score, total, onRetry }: ResultProps) {
       <div className="mb-6 text-2xl sm:text-3xl font-bold text-gray-900 text-center">
         {score} / {total} 問正解
         <div className="mt-2 text-lg text-blue-600">正答率: {percent}%</div>
+        <div className="mt-2 text-lg text-green-700 font-bold">階級: 【{militaryRank}】</div>
       </div>
       <div className="mb-8 text-2xl sm:text-3xl font-bold text-blue-700 text-center">{rank}</div>
       <div className="flex flex-col gap-4 w-full max-w-xs">
